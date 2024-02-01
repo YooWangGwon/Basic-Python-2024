@@ -64,9 +64,39 @@
         - 클래스에서 하나씩 생성하는 것 : 객체(object)
         - 클래스(class)는 설계도, 객체(object)는 설계도로 구현한 대상
         - 캡슐화(test22 : __plate_num 참조)
-    - 패키지
+    - 패키지, 모듈
+
+## 4일차
+- 파이썬 기초
+    - 패키지, 모듈 계속
+        - pip 사용
+
+        ```shell
+        > pip --version # pip 버전 확인
+        > pip list # 현재 설치된 라이브러리 목록 확인
+        > pip install 패키지명 # 패키지를 내 컴퓨터에 설치, Successfully installed 문구 확인할 것
+        > pip unistall 패키지명 # 패키지를 내 컴퓨터에서 삭제
+        ```
+    - 예외처리 : 비정상적인 프로그램 종료 방지
+
+    ```python
+    file : test27_eh.py
+    def divide(x, y): 
+        try:
+            return x / y # ZeroDivision 발생 주의
+        except ZeroDivisionError as e:
+            print('[오류] 제수는 0이 될 수 없습니다.')
+            return 0
+    ```
+    
+    - 텍스트 파일 입출력
+- 파이썬 활용
+    - 주피터 노트북
+
+
 
     - 객체지향(추후 학습 예정)
         - 오버로딩, 오버라이딩(재정의)
         - 상속, 다중상속
         - 추상클래스
+    - 가상 환경
