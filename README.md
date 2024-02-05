@@ -128,6 +128,11 @@
             th.setSignal.connect(self.setPgbTask)
             # ...
 
+    # 스레드에서 시그널이 넘어오면 ui처리를 대신 해주는 슬롯함수
+    @pyqtSlot(int) # BackWorker스레드에서 self.initSignal.emit() 동작해서 실행
+    def initPgbTask(self, maxVal):
+        self.pgbTask.setValue(0)
+        self.pgbTask.setRange(0, maxVal-1)
     ```
 
 - 가상환경
