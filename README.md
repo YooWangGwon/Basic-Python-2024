@@ -79,30 +79,6 @@
         ```
     - 예외처리 : 비정상적인 프로그램 종료 방지
 
-    ```python
-    file : test27_eh.py
-    def divide(x, y): 
-        try:
-            return x / y # ZeroDivision 발생 주의
-        except ZeroDivisionError as e:
-            print('[오류] 제수는 0이 될 수 없습니다.')
-            return 0
-    ```
-    
-    - 텍스트 파일 입출력
-    ```python
-    f = open('파일명', mode = 'r/w/a', encoding = 'cp949|utf-8')
-    f.read()
-    f.readline() # 읽기
-    f.write('text') # 쓰기
-    f.close() # 파일은 반드시 닫는다
-    ```
-- 파이썬 활용
-    - 주피터 노트북
-        - Ctrl + Shift + P (명령팔레트) 로 시작
-        - 사용방법(test31_jupyter.ipynb)
-    - folium 기본 사용
-    ![folium사용법](https://raw.githubusercontent.com/YooWangGwon/basic-python-2024/main/images/python_001.png)
 
 ## 5일차
 - 파이썬 응용
@@ -127,7 +103,32 @@
     - QtDesigner 사용법
     - ☆☆☆ 쓰레드 학습 : UI 쓰레드와 Background쓰레드 분리
         - GiL, 병렬프로세스 더 학습할 것
+
     ![쓰레드 예제](https://raw.githubusercontent.com/YooWangGwon/basic-python-2024/main/images/python_003.gif)
+
+    ```python
+    # 쓰레드 클래스에서 시그널 선언
+    class BackWorker(QThread): # PyQt에서 스레드 클래스 상속
+        initSignal = pyqtSignal(int) # 시그널을 밑에 있는 UI스레드로 전달하기 위한 변수객체
+        setSignal = pyqtSignal(int)
+        # ...
+
+        def run(self) -> None: # 스레드 실행
+        # 스레드로 동작할 내용
+            maxVal = 1000001
+            self.initSignal.emit(maxVal) # UI스레드로 보내기
+            # ...
+
+    class qtwin_exam(QWidget): # UI 스레드
+        # ...
+        def btnStartClicked(self):
+            th = BackWorker(self)
+            th.start() # BackWorker 내의 self.run()이 실행됨
+            th.initSignal.connect(self.initPgbTask) # 스레드에서 초기화 시그널이 오면 initPgbTask실행
+            th.setSignal.connect(self.setPgbTask)
+            # ...
+
+    ```
 
 - 가상환경
 

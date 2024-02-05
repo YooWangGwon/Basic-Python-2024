@@ -23,7 +23,7 @@ class BackWorker(QThread): # PyQt에서 스레드 클래스 상속
     def run(self) -> None: # 스레드 실행
         # 스레드로 동작할 내용
         maxVal = 1000001
-        self.initSignal.emit(maxVal) # 값을 넘겨주는
+        self.initSignal.emit(maxVal) # UI스레드로 보내기
         ### self.parent.pgbTask.setValue(0) # 프로그래스 바를 0부터 시작. QThread에선 UI 관련된 처리를 할 수 없음
         ### self.parent.pgbTask.setRange(0, maxVal-1) # 0 ~ 100
         for i in range(maxVal):
@@ -34,7 +34,7 @@ class BackWorker(QThread): # PyQt에서 스레드 클래스 상속
             ### self.parent.txbLog.append(print_str)
             ### self.parent.pgbTask.setValue(i)
 
-class qtwin_exam(QWidget): 
+class qtwin_exam(QWidget): # UI 스레드
     def __init__(self) -> None: 
         super().__init__() 
         uic.loadUi('./day06/ThreadApp.ui', self) # QtDesigner에서 만든 ui를 로드
