@@ -113,9 +113,26 @@
         - IP 주소 확인
         - QRcode 만들기
 
+## 6일차
+- Python 라이브러리 경로 : C:\DEV\Langs\Python311\Lib\site-packages
+- 파이썬 응용
+    - Window App(PyQt)만들기
 
-    - 객체지향(추후 학습 예정)
-        - 오버로딩, 오버라이딩(재정의)
-        - 상속, 다중상속
-        - 추상클래스
-    - 가상 환경
+    ```shell
+    > pip install PyQt5
+    > pip install PyQt5Designer
+    ```
+
+    - PyQt5 기본실행
+    - QtDesigner 사용법
+    - ☆☆☆ 쓰레드 학습 : UI 쓰레드와 Background쓰레드 분리
+        - GiL, 병렬프로세스 더 학습할 것
+    ![쓰레드 예제](https://raw.githubusercontent.com/YooWangGwon/basic-python-2024/main/images/python_003.gif)
+
+- 가상환경
+
+## 추후 학습예정 내용
+- 객체지향
+    - 오버로딩, 오버라이딩(재정의)
+    - 상속, 다중상속
+    - 추상클래스
