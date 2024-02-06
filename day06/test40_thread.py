@@ -20,7 +20,7 @@ class BackWorker(QThread): # PyQt에서 스레드 클래스 상속
         super().__init__(parent) # 부모 스레드에 있는 초기화는 그대로 사용
         self.parent = parent # BackWorker에서 사용할 멤버변수
 
-    def run(self) -> None: # 스레드 실행
+    def run(self) -> None: # 스레드 실행 # QThread에 있던 Run이라는 함수를 재정의
         # 스레드로 동작할 내용
         maxVal = 1000001
         self.initSignal.emit(maxVal) # UI스레드로 보내기

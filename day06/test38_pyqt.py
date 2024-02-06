@@ -25,7 +25,9 @@ class qtwin_exam(QWidget):
         print('중단버튼 클릭')
         self.lblStatus.setText('상태 : 동작중지')
 
-    def closeEvent(self,QCloseEvent) -> None:
+    # QWidget에 있는 closeEvent를 그대로 쓸 경우, X버튼을 누르면 바로 닫힘
+    # 닫을지 말지 한번더 물어보는 형태로 다시 구현하고 싶음(재정의:Override)
+    def closeEvent(self,QCloseEvent) -> None: # X버튼을 누르면 닫히기전에 한번더 물어볼 수 있도록 closeEvent를 재정의(오버라이딩)
         re = QMessageBox.question(self,'종료확인','종료하시겠습니까?',QMessageBox.Yes|QMessageBox.No)
         if re == QMessageBox.Yes: # 닫기
             QCloseEvent.accept()
